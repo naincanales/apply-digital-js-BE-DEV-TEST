@@ -6,6 +6,7 @@ import { Product } from './products/entities/product.entity';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { TaskService } from './task/task.service';
+import { ReportsModule } from './reports/reports.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { TaskService } from './task/task.service';
     ProductsModule,
     AuthModule,
     UsersModule,
+    ReportsModule,
   ],
   controllers: [],
   providers: [TaskService],
