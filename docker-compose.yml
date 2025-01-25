@@ -1,0 +1,50 @@
+version: '3.9'
+
+services:
+  api:
+    build: 
+      context: ./
+      dockerfile: Dockerfile
+    container_name: client-e-commerce-api
+    volumes:
+      - ./:/app
+    ports:
+      - 3000:3000
+    command: npm run start:dev
+    environment:
+      - PORT=3000
+      - CONTENTFUL_SPACE_ID=9xs1613l9f7v
+      - CONTENTFUL_ACCESS_TOKEN=I-ThsT55eE_B3sCUWEQyDT4VqVO3x__20ufuie9usns
+      - CONTENTFUL_ENVIRONMENT=master
+      - CONTENTFUL_CONTENT_TYPE=product
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=client-e-commerce
+      - DB_HOST=db
+      - DB_PORT=5432
+    depends_on:
+      - db
+    networks:
+      - e-commerce-network
+
+  db:
+    image: postgres:15-alpine
+    container_name: client-e-commerce-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: client-e-commerce
+    ports:
+      - 5432:5432
+    volumes:
+      - db:/var/lib/postgresql/data
+    networks:
+      - e-commerce-network
+
+volumes:
+  db: 
+   driver: local
+
+networks:
+  e-commerce-network:
+    driver: bridge
