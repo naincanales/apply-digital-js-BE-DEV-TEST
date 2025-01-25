@@ -5,6 +5,7 @@ import { ProductsModule } from './products/products.module';
 import { Product } from './products/entities/product.entity';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
+import { TaskService } from './task/task.service';
 
 @Module({
   imports: [
@@ -25,6 +26,6 @@ import { UsersModule } from './users/users.module';
     UsersModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [TaskService],
 })
 export class AppModule {}
