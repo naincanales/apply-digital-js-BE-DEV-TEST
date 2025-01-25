@@ -5,6 +5,17 @@
 
 The application is designed to function seamlessly without requiring you to manually execute a data-loading job. During the application's startup, a job is automatically executed to seed the database with product data, ensuring it is ready for use immediately.
 
+### Environment Variables
+
+Make sure to configure the following environment variables in your `.env` file:
+
+```env
+CONTENTFUL_SPACE_ID=SomenthingHere
+CONTENTFUL_ACCESS_TOKEN=SomenthingHere
+CONTENTFUL_ENVIRONMENT=SomenthingHere
+CONTENTFUL_CONTENT_TYPE=SomenthingHere
+```
+
 ### Default Credentials
 
 You can log in to the application using the following default credentials:
