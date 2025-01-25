@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable } from '@nestjs/common';
 
 export type User = {
   userId: number;
@@ -11,8 +11,8 @@ export class UsersService {
   private readonly users = [
     {
       userId: 1,
-      username: "admin",
-      password: "pass.123",
+      username: 'admin',
+      password: 'pass.123',
     },
   ];
 
