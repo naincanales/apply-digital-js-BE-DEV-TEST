@@ -1,16 +1,18 @@
 import { Module } from '@nestjs/common';
+import { ScheduleModule } from '@nestjs/schedule';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { ProductsModule } from './products/products.module';
+import { TaskService } from './task/task.service';
 import { Product } from './products/entities/product.entity';
+import { ReportsModule } from './reports/reports.module';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
-import { TaskService } from './task/task.service';
-import { ReportsModule } from './reports/reports.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
+    ScheduleModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: process.env.DB_HOST || 'localhost',
@@ -23,9 +25,9 @@ import { ReportsModule } from './reports/reports.module';
     }),
     TypeOrmModule.forFeature([Product]),
     ProductsModule,
+    ReportsModule,
     AuthModule,
     UsersModule,
-    ReportsModule,
   ],
   controllers: [],
   providers: [TaskService],
